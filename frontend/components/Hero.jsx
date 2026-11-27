@@ -1,8 +1,7 @@
 import { Globe2, Sparkle } from 'lucide-react';
 import { Parallax } from 'react-scroll-parallax';
 import CountUp from './CountUp';
-import heroImage from '../src/assets/Untitled-1.png';
-import { mediaUrl } from '../src/api';
+import profileImage from '../src/assets/me2 background.png';
 
 function parseStatValue(value) {
   const match = String(value).match(/^(\d+(?:\.\d+)?)(.*)$/);
@@ -16,7 +15,6 @@ function parseStatValue(value) {
 export default function Hero({ data }) {
   if (!data) return null;
   const headings = data.settings?.sectionHeadings || {};
-  const imageSrc = data.settings?.heroImage ? mediaUrl(data.settings.heroImage) : heroImage;
 
   return (
     <section className="hero" id="home">
@@ -43,13 +41,7 @@ export default function Hero({ data }) {
         </div>
 
         <div className="hero-center">
-          <Parallax speed={8} className="hero-portrait-parallax">
-            <img
-              src={imageSrc}
-              alt={`${data.name || 'Sandaru Kaushan'} full-stack developer and AI engineer`}
-              className="hero-portrait"
-            />
-          </Parallax>
+          <img src={profileImage} alt={`${data.name || 'Profile'} portrait`} className="hero-portrait" />
         </div>
 
         <div className="hero-right">
@@ -80,5 +72,3 @@ export default function Hero({ data }) {
     </section>
   );
 }
-
-

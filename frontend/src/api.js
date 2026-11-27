@@ -30,6 +30,13 @@ async function request(endpoint, options = {}) {
   const res = await fetch(`${API_BASE}${endpoint}`, { ...options, headers });
 
   if (!res.ok) {
+    if (res.status === 401 && token && endpoint !== '/auth/login') {
+      if (getToken() === token) {
+        localStorage.removeItem('adminToken');
+        window.dispatchEvent(new Event('admin-session-expired'));
+      }
+      throw new Error('Your session expired. Sign in again, then retry saving. Your edits are still here.');
+    }
     const err = await res.json().catch(() => ({}));
     throw new Error(err.message || 'Request failed');
   }

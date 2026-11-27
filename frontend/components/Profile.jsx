@@ -1,12 +1,12 @@
 import { motion } from 'motion/react';
-import portImage from '../src/assets/port1.png';
+import profileImage from '../src/assets/me2.png';
 import { mediaUrl } from '../src/api';
 import { fadeLeft, fadeRight, fadeUp, smoothTransition, viewportReplay } from './animationPresets';
 
 export default function Profile({ data }) {
   if (!data) return null;
   const headings = data.settings?.sectionHeadings || {};
-  const imageSrc = data.settings?.aboutImage ? mediaUrl(data.settings.aboutImage) : portImage;
+  const imageSrc = data.settings?.aboutImage ? mediaUrl(data.settings.aboutImage) : profileImage;
 
   return (
     <section className="profile-section" id="about">
@@ -19,7 +19,7 @@ export default function Profile({ data }) {
           transition={smoothTransition}
           viewport={viewportReplay}
         >
-          <img src={imageSrc} alt={`${data.name || 'Profile'} workspace`} className="profile-image" />
+          <img src={imageSrc} alt={`${data.name || 'Profile'} portrait`} className="profile-image" />
         </motion.div>
 
         <motion.div
@@ -50,7 +50,7 @@ export default function Profile({ data }) {
                   <span className="experience-role">{exp.role}</span>
                 </div>
                 {i === 0 && data.settings?.featuredExperienceBadge !== false && (
-                  <span className="experience-badge">{data.settings?.featuredExperienceBadge || 'Speech-to-Text AI System'}</span>
+                  <span className="experience-badge">{data.settings?.featuredExperienceBadge || 'AI Agent Management Platform (Agent Store)'}</span>
                 )}
                 <p className="experience-desc">{exp.description}</p>
               </motion.div>

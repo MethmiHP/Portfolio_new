@@ -46,7 +46,7 @@ function ProjectCard({ project, index, onSelect }) {
         ) : project.image ? (
           <img
             src={mediaUrl(project.image)}
-            alt={`${project.title || 'Portfolio project'}${project.subtitle ? ` - ${project.subtitle}` : ''} by Sandaru Kaushan`}
+            alt={`${project.title || 'Portfolio project'}${project.subtitle ? ` - ${project.subtitle}` : ''} by Methmi Pathirana`}
             className="project-image"
           />
         ) : (
@@ -56,7 +56,7 @@ function ProjectCard({ project, index, onSelect }) {
         )}
         {!project.video && (
           <div className="project-hover-reveal">
-            <span>View Documentation</span>
+            <span>View Project Details</span>
             <ArrowRight size={16} strokeWidth={1.8} aria-hidden="true" />
           </div>
         )}
@@ -67,7 +67,13 @@ function ProjectCard({ project, index, onSelect }) {
           <span className="project-category-label">{getCategory(project)}</span>
           <h3 className="project-title">{project.title}</h3>
           <p className="project-subtitle">{project.subtitle}</p>
+          <p className="project-meta">{[project.role, project.period].filter(Boolean).join(' · ')}</p>
           {project.description && <p className="project-desc">{project.description}</p>}
+          {!!project.technologies?.length && (
+            <div className="project-modal-tech">
+              {project.technologies.map((tech) => <span key={tech}>{tech}</span>)}
+            </div>
+          )}
           {project.link && (
             <a
               href={project.link}
@@ -208,7 +214,7 @@ export default function Projects({ projects, settings }) {
               ) : selectedProject.image ? (
                 <img
                   src={mediaUrl(selectedProject.image)}
-                  alt={`${selectedProject.title || 'Portfolio project'}${selectedProject.subtitle ? ` - ${selectedProject.subtitle}` : ''} by Sandaru Kaushan`}
+                  alt={`${selectedProject.title || 'Portfolio project'}${selectedProject.subtitle ? ` - ${selectedProject.subtitle}` : ''} by Methmi Pathirana`}
                 />
               ) : (
                 <div className="project-modal-placeholder">{selectedProject.title?.charAt(0) || 'P'}</div>
@@ -221,6 +227,7 @@ export default function Projects({ projects, settings }) {
               </span>
               <h2 id="project-modal-title">{selectedProject.title}</h2>
               {selectedProject.subtitle && <p className="project-modal-subtitle">{selectedProject.subtitle}</p>}
+              <p className="project-meta">{[selectedProject.role, selectedProject.period].filter(Boolean).join(' · ')}</p>
               {selectedProject.description && (
                 <p className="project-modal-description">{selectedProject.description}</p>
               )}
@@ -240,7 +247,7 @@ export default function Projects({ projects, settings }) {
                   rel="noopener noreferrer"
                   className="project-modal-link"
                 >
-                  Open Live Project <ExternalLink size={16} strokeWidth={1.8} aria-hidden="true" />
+                  Open Project <ExternalLink size={16} strokeWidth={1.8} aria-hidden="true" />
                 </a>
               )}
             </div>

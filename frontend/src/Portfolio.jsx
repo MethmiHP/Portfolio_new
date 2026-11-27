@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { api } from './api';
 import { defaultPortfolio, defaultProjects } from './defaults';
+import { getDisplayProjects } from './projectContent';
 import Navbar from '../components/Navbar';
+import AnimatedBackground from '../components/AnimatedBackground';
 import Hero from '../components/Hero';
 import SkillsVelocity from '../components/SkillsVelocity';
 import Profile from '../components/Profile';
@@ -21,7 +23,7 @@ export default function Portfolio() {
     Promise.all([api.getPortfolio(), api.getProjects()])
       .then(([p, proj]) => {
         setPortfolio(p?.key ? p : defaultPortfolio);
-        setProjects(proj);
+        setProjects(getDisplayProjects(proj));
       })
       .catch(() => {
         setPortfolio(defaultPortfolio);
@@ -36,6 +38,7 @@ export default function Portfolio() {
 
   return (
     <div className="portfolio">
+      <AnimatedBackground />
       <Navbar settings={portfolio?.settings} />
       <Hero data={portfolio} />
       <SkillsVelocity skills={portfolio?.skills || []} />

@@ -16,7 +16,7 @@ function getSocialMark(type = '', label = '') {
 export default function Contact({ data }) {
   const contact = data?.contact;
   if (!contact) return null;
-  const copyright = data?.settings?.footerCopyright || 'Sandaru Kaushan. All rights reserved.';
+  const copyright = data?.settings?.footerCopyright || 'Methmi Pathirana. All rights reserved.';
   const socialLinks = Array.from(
     new Map(
       (contact.socialLinks || [])

@@ -1,10 +1,11 @@
-import { ArrowRight, BriefcaseBusiness, LockKeyhole } from 'lucide-react';
+import { ArrowRight, BriefcaseBusiness } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../src/api';
 import { defaultPortfolio } from '../src/defaults';
 import Navbar from './Navbar';
+import AnimatedBackground from './AnimatedBackground';
 import { fadeUp, smoothTransition, viewportReplay } from './animationPresets';
 
 const initialForm = {
@@ -86,6 +87,7 @@ export default function ProjectHandover() {
 
   return (
     <main className="handover-page">
+      <AnimatedBackground />
       <Navbar settings={settings} />
       {settings.hireEnabled === false ? (
         <section className="handover-section">
@@ -112,10 +114,6 @@ export default function ProjectHandover() {
             <span className="qa-kicker"><BriefcaseBusiness size={16} /> {settings.hire?.kicker || 'Start a Project'}</span>
             <h2 className="section-heading">{settings.hire?.heading || 'HAND OVER YOUR PROJECT'}</h2>
             <p>{settings.hire?.description || 'Share your idea, requirements, budget range, and timeline. After we agree on the project, I can create a private client login where you can track the live status, progress, and feedback.'}</p>
-            <Link to="/client-login" className="client-login-link">
-              <LockKeyhole size={16} aria-hidden="true" />
-              {settings.hire?.clientLink || 'Existing client? View project status'}
-            </Link>
           </div>
 
           <form className="handover-form" onSubmit={handleSubmit} noValidate>

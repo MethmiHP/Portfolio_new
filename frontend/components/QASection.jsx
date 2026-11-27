@@ -33,7 +33,10 @@ export default function QASection({ settings }) {
     try {
       await api.askQuestion(form);
       setForm({ name: '', question: '' });
-      setMessage(copy.success || 'Question sent. I will answer it from the admin panel soon.');
+      const legacyMessage = 'Question sent. I will answer it from the admin panel soon.';
+      setMessage(copy.success && copy.success !== legacyMessage
+        ? copy.success
+        : 'Thank you for your question. I’ll get back to you soon.');
     } catch (err) {
       setMessage(err.message);
     } finally {
@@ -46,7 +49,7 @@ export default function QASection({ settings }) {
       {!isOpen && (
         <button type="button" className="qa-chat-toggle" onClick={() => setIsOpen(true)}>
           <MessageCircle size={19} aria-hidden="true" />
-          {copy.toggle || 'Ask Sandaru'}
+          {copy.toggle || 'Ask Methmi a Question'}
         </button>
       )}
 
@@ -90,7 +93,7 @@ export default function QASection({ settings }) {
                         <p>{item.question}</p>
                       </div>
                       <div className="qa-dialog-block answer">
-                        <span>{copy.replyLabel || "Sandaru's Reply"}</span>
+                        <span>{copy.replyLabel || "Methmi's Reply"}</span>
                         <p>{item.answer}</p>
                       </div>
                     </article>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { api } from '../../src/api';
 
-export default function AdminLogin({ onLogin }) {
+export default function AdminLogin({ onLogin, notice = '' }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -26,7 +26,8 @@ export default function AdminLogin({ onLogin }) {
     <div className="admin-login">
       <form className="admin-login-form" onSubmit={handleSubmit}>
         <h1>Admin Panel</h1>
-        <p className="admin-subtitle">Sandaru Kaushan Portfolio</p>
+        <p className="admin-subtitle">Methmi Pathirana Portfolio</p>
+        {notice && <p role="status">{notice}</p>}
         {error && <p className="admin-error">{error}</p>}
         <label>
           Username

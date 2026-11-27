@@ -1,6 +1,8 @@
 import dns from 'dns/promises';
 import nodemailer from 'nodemailer';
 
+const contactEmail = 'meth.pathirana@gmail.com';
+
 const requiredMailVariables = ['MAIL_HOST', 'MAIL_USER', 'ADMIN_EMAIL'];
 
 function getMailPassword() {
@@ -97,10 +99,10 @@ function nl2br(value = '') {
 function detailRows(rows) {
   return rows.map(([label, value]) => `
     <tr>
-      <td style="padding:12px 14px;border-bottom:1px solid #242424;color:#8f8f8f;font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;width:34%">
+      <td style="padding:12px 14px;border-bottom:1px solid #e5d9f5;color:#716184;font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;width:34%">
         ${escapeHtml(label)}
       </td>
-      <td style="padding:12px 14px;border-bottom:1px solid #242424;color:#f5f5f5;font-size:14px;line-height:1.55">
+      <td style="padding:12px 14px;border-bottom:1px solid #e5d9f5;color:#2e1065;font-size:14px;line-height:1.55">
         ${escapeHtml(value || 'Not provided')}
       </td>
     </tr>
@@ -108,33 +110,33 @@ function detailRows(rows) {
 }
 
 function brandedEmail({ preheader, eyebrow, title, intro, children, cta, footerNote }) {
-  const safePreheader = escapeHtml(preheader || title || 'Sandaru Kaushan Portfolio');
+  const safePreheader = escapeHtml(preheader || title || 'Methmi Pathirana Portfolio');
 
   return `
     <!doctype html>
     <html>
-      <body style="margin:0;padding:0;background:#050505;font-family:Arial,Helvetica,sans-serif;color:#f5f5f5">
+      <body style="margin:0;padding:0;background:#f7f3ff;font-family:Arial,Helvetica,sans-serif;color:#2e1065">
         <div style="display:none;max-height:0;overflow:hidden;color:transparent;opacity:0">
           ${safePreheader}
         </div>
-        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#050505;padding:28px 12px">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f7f3ff;padding:28px 12px">
           <tr>
             <td align="center">
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:720px;background:#0b0b0b;border:1px solid #242424;border-collapse:separate">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:720px;background:#ffffff;border:1px solid #e5d9f5;border-collapse:separate">
                 <tr>
-                  <td style="padding:24px 26px;border-bottom:1px solid #242424;background:linear-gradient(135deg,#101010,#050505)">
+                  <td style="padding:24px 26px;border-bottom:1px solid #e5d9f5;background:#f7f3ff">
                     <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                       <tr>
                         <td>
-                          <div style="font-size:28px;font-weight:900;letter-spacing:-1px;color:#ffffff;line-height:1">
-                            SK<span style="color:#cc0000">.</span>
+                          <div style="font-size:24px;font-weight:800;letter-spacing:-0.5px;color:#2e1065;line-height:1">
+                            Methmi Pathirana
                           </div>
-                          <div style="margin-top:10px;color:#8f8f8f;font-size:10px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase">
-                            Full-Stack / AI-ML Engineer
+                          <div style="margin-top:10px;color:#716184;font-size:10px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase">
+                            Full-Stack Developer
                           </div>
                         </td>
-                        <td align="right" style="color:#cc0000;font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase">
-                          Portfolio System
+                        <td align="right" style="color:#7c3aed;font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase">
+                          Portfolio
                         </td>
                       </tr>
                     </table>
@@ -143,11 +145,11 @@ function brandedEmail({ preheader, eyebrow, title, intro, children, cta, footerN
 
                 <tr>
                   <td style="padding:30px 26px 12px">
-                    ${eyebrow ? `<div style="color:#cc0000;font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">${escapeHtml(eyebrow)}</div>` : ''}
-                    <h1 style="margin:0;color:#ffffff;font-size:32px;line-height:1.05;letter-spacing:.5px;text-transform:uppercase">
+                    ${eyebrow ? `<div style="color:#7c3aed;font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">${escapeHtml(eyebrow)}</div>` : ''}
+                    <h1 style="margin:0;color:#2e1065;font-size:32px;line-height:1.05;letter-spacing:.5px;text-transform:uppercase">
                       ${escapeHtml(title)}
                     </h1>
-                    ${intro ? `<p style="margin:18px 0 0;color:#cfcfcf;font-size:15px;line-height:1.75">${intro}</p>` : ''}
+                    ${intro ? `<p style="margin:18px 0 0;color:#59466f;font-size:15px;line-height:1.75">${intro}</p>` : ''}
                   </td>
                 </tr>
 
@@ -156,7 +158,7 @@ function brandedEmail({ preheader, eyebrow, title, intro, children, cta, footerN
                     ${children}
                     ${cta ? `
                       <div style="margin-top:24px">
-                        <a href="${escapeHtml(cta.href)}" style="display:inline-block;background:#cc0000;color:#ffffff;text-decoration:none;padding:13px 18px;font-size:12px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase">
+                        <a href="${escapeHtml(cta.href)}" style="display:inline-block;background:#7c3aed;color:#ffffff;text-decoration:none;padding:13px 18px;font-size:12px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase">
                           ${escapeHtml(cta.label)}
                         </a>
                       </div>
@@ -165,14 +167,14 @@ function brandedEmail({ preheader, eyebrow, title, intro, children, cta, footerN
                 </tr>
 
                 <tr>
-                  <td style="padding:22px 26px;border-top:1px solid #242424;background:#080808">
-                    <p style="margin:0;color:#bdbdbd;font-size:13px;line-height:1.7">
+                  <td style="padding:22px 26px;border-top:1px solid #e5d9f5;background:#faf8ff">
+                    <p style="margin:0;color:#59466f;font-size:13px;line-height:1.7">
                       Best regards,<br>
-                      <strong style="color:#ffffff">Sandaru Kaushan</strong><br>
-                      Full-Stack / AI-ML Engineer<br>
-                      <a href="mailto:${escapeHtml(process.env.ADMIN_EMAIL || 'sandarukaushanwork@gmail.com')}" style="color:#cc0000;text-decoration:none">${escapeHtml(process.env.ADMIN_EMAIL || 'sandarukaushanwork@gmail.com')}</a>
+                      <strong style="color:#2e1065">Methmi Pathirana</strong><br>
+                      Full-Stack Developer<br>
+                      <a href="mailto:${escapeHtml(contactEmail)}" style="color:#7c3aed;text-decoration:none">${escapeHtml(contactEmail)}</a>
                     </p>
-                    ${footerNote ? `<p style="margin:16px 0 0;color:#777;font-size:11px;line-height:1.6">${footerNote}</p>` : ''}
+                    ${footerNote ? `<p style="margin:16px 0 0;color:#716184;font-size:11px;line-height:1.6">${footerNote}</p>` : ''}
                   </td>
                 </tr>
               </table>
@@ -223,7 +225,7 @@ async function sendMail(message) {
   for (const { label, transporter } of transports) {
     try {
       return await transporter.sendMail({
-        from: `"Sandaru Kaushan Portfolio" <${process.env.MAIL_USER}>`,
+        from: `"Methmi Pathirana Portfolio" <${process.env.MAIL_USER}>`,
         ...message,
       });
     } catch (error) {
@@ -252,7 +254,7 @@ export async function sendAdminProjectNotification(project) {
       title: 'Project Handover Received',
       intro: `A customer submitted a new project request from your portfolio. You can review it in the admin panel and create private portal credentials when ready.`,
       children: `
-        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border:1px solid #242424;background:#101010;border-collapse:collapse">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border:1px solid #e5d9f5;background:#f7f3ff;border-collapse:collapse">
           ${detailRows([
             ['Client', project.clientName],
             ['Email', project.email],
@@ -261,12 +263,12 @@ export async function sendAdminProjectNotification(project) {
             ['Timeline', project.timeline || 'Not provided'],
           ])}
         </table>
-        <div style="margin-top:18px;padding:18px;border:1px solid #242424;background:#070707">
-          <div style="color:#cc0000;font-size:11px;font-weight:900;letter-spacing:1.7px;text-transform:uppercase;margin-bottom:10px">Project Details</div>
-          <p style="margin:0;color:#f5f5f5;font-size:14px;line-height:1.75">${nl2br(project.description)}</p>
+        <div style="margin-top:18px;padding:18px;border:1px solid #e5d9f5;background:#faf8ff">
+          <div style="color:#7c3aed;font-size:11px;font-weight:900;letter-spacing:1.7px;text-transform:uppercase;margin-bottom:10px">Project Details</div>
+          <p style="margin:0;color:#2e1065;font-size:14px;line-height:1.75">${nl2br(project.description)}</p>
         </div>
       `,
-      footerNote: 'This email was generated automatically by the Sandaru Kaushan portfolio admin system.',
+      footerNote: 'This email was generated automatically by the Methmi Pathirana portfolio admin system.',
     }),
   });
 }
@@ -274,20 +276,20 @@ export async function sendAdminProjectNotification(project) {
 export async function sendProjectReceivedEmail(project) {
   return sendMail({
     to: project.email,
-    replyTo: process.env.ADMIN_EMAIL,
+    replyTo: contactEmail,
     subject: `Project Request Received - ${project.projectTitle}`,
     html: brandedEmail({
       preheader: `I received your project request: ${project.projectTitle}`,
       eyebrow: 'Request Received',
       title: 'Thank You for Your Project Request',
-      intro: `Hello ${escapeHtml(project.clientName)}, I received your request for <strong style="color:#ffffff">${escapeHtml(project.projectTitle)}</strong>.`,
+      intro: `Hello ${escapeHtml(project.clientName)}, Thank you for reaching out about <strong style="color:#2e1065">${escapeHtml(project.projectTitle)}</strong>.`,
       children: `
-        <div style="padding:18px;border:1px solid #242424;background:#101010">
-          <p style="margin:0;color:#cfcfcf;font-size:14px;line-height:1.75">
-            I will review your requirements, budget, and preferred timeline, then contact you to discuss scope, next steps, and the best way to bring your idea to life.
+        <div style="padding:18px;border:1px solid #e5d9f5;background:#f7f3ff">
+          <p style="margin:0;color:#59466f;font-size:14px;line-height:1.75">
+            I have received your project request and will review your requirements, budget, and preferred timeline. I will get back to you soon to discuss the scope and next steps.
           </p>
-          <p style="margin:14px 0 0;color:#cfcfcf;font-size:14px;line-height:1.75">
-            Once your project is approved, your private client portal login details will be sent to this same email address.
+          <p style="margin:14px 0 0;color:#59466f;font-size:14px;line-height:1.75">
+            Once we confirm the project details, I will send your client portal login details to this email address so you can follow your project’s progress.
           </p>
         </div>
       `,
@@ -304,16 +306,16 @@ export async function sendClientPortalCredentials(project, temporaryPassword) {
   return sendMail({
     to: project.email,
     cc: adminCopyEmail,
-    replyTo: process.env.ADMIN_EMAIL,
+    replyTo: contactEmail,
     subject: `Your Client Portal Access - ${project.projectTitle}`,
     html: brandedEmail({
       preheader: `Client portal access for ${project.projectTitle}`,
       eyebrow: 'Private Client Portal',
       title: 'Your Project Portal Is Ready',
-      intro: `Hello ${escapeHtml(project.clientName)}, your private project portal for <strong style="color:#ffffff">${escapeHtml(project.projectTitle)}</strong> has been created.`,
+      intro: `Hello ${escapeHtml(project.clientName)}, your private project portal for <strong style="color:#2e1065">${escapeHtml(project.projectTitle)}</strong> has been created.`,
       children: `
-        <div style="padding:18px;border:1px solid #cc0000;background:#160707;margin-top:4px">
-          <div style="color:#cc0000;font-size:11px;font-weight:900;letter-spacing:1.7px;text-transform:uppercase;margin-bottom:12px">Login Credentials</div>
+        <div style="padding:18px;border:1px solid #7c3aed;background:#f3edff;margin-top:4px">
+          <div style="color:#7c3aed;font-size:11px;font-weight:900;letter-spacing:1.7px;text-transform:uppercase;margin-bottom:12px">Login Credentials</div>
           <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse">
             ${detailRows([
               ['Username', project.username],
@@ -321,10 +323,10 @@ export async function sendClientPortalCredentials(project, temporaryPassword) {
             ])}
           </table>
         </div>
-        <p style="margin:18px 0 0;color:#cfcfcf;font-size:14px;line-height:1.75">
+        <p style="margin:18px 0 0;color:#59466f;font-size:14px;line-height:1.75">
           You can use the portal to track project progress, review live updates, and follow important feedback throughout development.
         </p>
-        <p style="margin:12px 0 0;color:#cfcfcf;font-size:14px;line-height:1.75">
+        <p style="margin:12px 0 0;color:#59466f;font-size:14px;line-height:1.75">
           For security, please change your temporary password after your first login.
         </p>
       `,
