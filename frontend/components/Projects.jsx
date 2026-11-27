@@ -48,6 +48,8 @@ function ProjectCard({ project, index, onSelect }) {
             src={mediaUrl(project.image)}
             alt={`${project.title || 'Portfolio project'}${project.subtitle ? ` - ${project.subtitle}` : ''} by Methmi Pathirana`}
             className="project-image"
+            loading="lazy"
+            decoding="async"
           />
         ) : (
           <div className="project-placeholder">

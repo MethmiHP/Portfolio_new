@@ -3051,3 +3051,9 @@ img {
 .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 :root[data-theme="dark"] .field-error { color: #ffa2b5; }
 :root[data-theme="dark"] .admin-message { color: #86efac; border-color: #4ade80; }
+
+.seo-initial { max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem; }
+.seo-initial section { margin-top: 3rem; }
+.seo-initial article { margin: 1.5rem 0; }
+.seo-initial p { margin: 0.75rem 0; }
+.seo-initial a { color: var(--accent); text-decoration: underline; }

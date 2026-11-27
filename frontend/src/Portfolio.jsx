@@ -15,9 +15,8 @@ import QASection from '../components/QASection';
 import Contact from '../components/Contact';
 
 export default function Portfolio() {
-  const [portfolio, setPortfolio] = useState(null);
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [portfolio, setPortfolio] = useState(defaultPortfolio);
+  const [projects, setProjects] = useState(defaultProjects);
 
   useEffect(() => {
     Promise.all([api.getPortfolio(), api.getProjects()])
@@ -28,16 +27,11 @@ export default function Portfolio() {
       .catch(() => {
         setPortfolio(defaultPortfolio);
         setProjects(defaultProjects);
-      })
-      .finally(() => setLoading(false));
+      });
   }, []);
 
-  if (loading) {
-    return <div className="loading-screen">Loading portfolio...</div>;
-  }
-
   return (
-    <div className="portfolio">
+    <main className="portfolio">
       <AnimatedBackground />
       <Navbar settings={portfolio?.settings} />
       <Hero data={portfolio} />
@@ -51,6 +45,6 @@ export default function Portfolio() {
       </div>
       <QASection settings={portfolio?.settings} />
       <Contact data={portfolio} />
-    </div>
+    </main>
   );
 }

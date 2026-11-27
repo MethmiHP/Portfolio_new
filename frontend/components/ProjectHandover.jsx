@@ -94,7 +94,7 @@ export default function ProjectHandover() {
           <div className="handover-grid">
             <div className="handover-copy">
               <span className="qa-kicker"><BriefcaseBusiness size={16} /> Hire Me</span>
-              <h2 className="section-heading">PROJECT REQUESTS ARE CLOSED</h2>
+              <h1 className="section-heading">PROJECT REQUESTS ARE CLOSED</h1>
               <p>I am not accepting new project handovers through the website right now.</p>
               <Link to="/" className="client-login-link">Back to Portfolio</Link>
             </div>
@@ -112,7 +112,7 @@ export default function ProjectHandover() {
         >
           <div className="handover-copy">
             <span className="qa-kicker"><BriefcaseBusiness size={16} /> {settings.hire?.kicker || 'Start a Project'}</span>
-            <h2 className="section-heading">{settings.hire?.heading || 'HAND OVER YOUR PROJECT'}</h2>
+            <h1 className="section-heading">{settings.hire?.heading || 'HAND OVER YOUR PROJECT'}</h1>
             <p>{settings.hire?.description || 'Share your idea, requirements, budget range, and timeline. After we agree on the project, I can create a private client login where you can track the live status, progress, and feedback.'}</p>
           </div>
 

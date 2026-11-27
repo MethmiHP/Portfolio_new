@@ -19,7 +19,7 @@ export default function Profile({ data }) {
           transition={smoothTransition}
           viewport={viewportReplay}
         >
-          <img src={imageSrc} alt={`${data.name || 'Profile'} portrait`} className="profile-image" />
+          <img src={imageSrc} alt={`${data.name || 'Profile'} portrait`} className="profile-image" loading="lazy" decoding="async" />
         </motion.div>
 
         <motion.div

@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /client
-Disallow: /client-login
 
-Sitemap: https://www.sandarukaushan.online/sitemap.xml
+Sitemap: https://www.methmipathirana.online/sitemap.xml
